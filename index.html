@@ -23,13 +23,12 @@
 
     <header class="max-w-7xl mx-auto mb-12 text-center">
         <h1 class="text-5xl md:text-6xl font-black text-cyan-400 uppercase tracking-tighter italic">DECODE MY TRAVEL</h1>
-        <p class="text-slate-500 font-bold uppercase mt-4 tracking-[0.3em] text-xs">Intelligence Hub 2026</p>
+        <p class="text-slate-500 font-bold uppercase mt-4 tracking-[0.3em] text-xs underline decoration-cyan-500 underline-offset-8">Intelligence Hub 2026</p>
     </header>
 
     <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
         
         <div class="lg:col-span-4 space-y-8">
-            
             <section class="tool-card">
                 <h2 class="text-cyan-400 font-black mb-6 uppercase text-xs tracking-widest italic">15-Currency Matrix (100 Base)</h2>
                 <div class="space-y-4">
@@ -43,7 +42,7 @@
                     </select>
                     <label class="text-[10px] text-slate-500 font-black uppercase">I Want:</label>
                     <select id="to_curr" class="w-full bg-[#1e293b] p-4 rounded-xl outline-none border border-slate-700 font-bold text-cyan-400 text-sm">
-                        <option value="0.92">EUR (Euro)</option><option value="1">USD (US Dollar)</option><option value="17.1">MXN (Mexican Peso)</option>
+                        <option value="0.92">EUR (Euro)</option><option value="1">USD (US Dollar)</option><option value="0.79">GBP (Pound)</option><option value="17.1">MXN (Peso)</option>
                     </select>
                     <button onclick="doConvert()" class="w-full bg-cyan-500 text-[#020617] font-black py-5 rounded-xl uppercase tracking-widest">Convert (4% Fee)</button>
                     <div id="res_curr" style="display:none;" class="mt-4 p-6 bg-[#020617] rounded-xl text-center text-3xl font-black text-cyan-400 border border-slate-800"></div>
@@ -71,7 +70,7 @@
             </section>
 
             <section class="tool-card">
-                <h2 class="text-cyan-400 font-black mb-6 uppercase text-xs tracking-widest italic">Weight Converter</h2>
+                <h2 class="text-cyan-400 font-black mb-6 uppercase text-xs tracking-widest italic">Baggage Weight Converter</h2>
                 <div class="flex gap-4">
                     <div class="flex-1">
                         <label class="text-[10px] text-slate-500 font-black uppercase">Value</label>
@@ -92,7 +91,7 @@
                     <div><input type="checkbox" class="t-box chip-checkbox" id="c1" data-t="🇲🇽 <strong>MEXICO:</strong> 10-15% for guides. USD $1s king. Check for 'Servicio Incluido'."><label for="c1" class="chip-label">MEXICO</label></div>
                     <div><input type="checkbox" class="t-box chip-checkbox" id="c2" data-t="🇧🇸 <strong>BAHAMAS:</strong> 15% service charge included in Nassau."><label for="c2" class="chip-label">BAHAMAS</label></div>
                     <div><input type="checkbox" class="t-box chip-checkbox" id="c3" data-t="🇰🇳 <strong>CARIBBEAN:</strong> Standard 15% taxi tours."><label for="c3" class="chip-label">CARIBBEAN</label></div>
-                    <div><input type="checkbox" class="t-box chip-checkbox" id="c4" data-t="🇪🇺 <strong>EUROPE:</strong> Modest tipping. €1-2 drinks; €5 dinner."><label for="c4" class="chip-label">EUROPE</label></div>
+                    <div><input type="checkbox" class="t-box chip-checkbox" id="c4" data-t="🇪🇺 <strong>EUROPE:</strong> Modest tipping. €1-2 for drinks; €5 for dinner."><label for="c4" class="chip-label">EUROPE</label></div>
                 </div>
                 <button onclick="doTips()" class="w-full bg-cyan-500 text-[#020617] font-black py-5 rounded-xl uppercase tracking-widest">Generate Tips</button>
                 <div id="res_tips" style="display:none;" class="mt-4 p-6 bg-[#020617] rounded-xl text-xs space-y-4 text-slate-300 border border-slate-800 leading-relaxed"></div>
@@ -114,12 +113,10 @@
                         <p class="mb-4 font-bold text-white">1. A La Carte Pricing (May 2026 Fleet Averages)</p>
                         <p class="mb-6 text-slate-400">Choosing to "Pay as You Go" requires tracking the 20% "hidden tax" (automatic gratuity) applied on most lines. Below is the current market rate for single servings.</p>
                         <table>
-                            <thead>
-                                <tr><th>Cruise Line</th><th>Cocktail Avg</th><th>Beer Avg</th><th>Wine (Glass)</th><th>Automatic Tip</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Princess</td><td>$12 – $15</td><td>$7.50 – $9</td><td>$10 – $14</td><td>20%</td></tr>
-                                <tr><td>Royal Caribbean</td><td>$14 – $16</td><td>$8 – $10</td><td>$12 – $18</td><td>18%</td></tr>
+                            <thead><tr><th>Cruise Line</th><th>Cocktail</th><th>Beer</th><th>Wine</th><th>Auto-Tip</th></tr></thead>
+                            <tbody class="text-white font-medium">
+                                <tr><td>Princess</td><td>$12–$15</td><td>$7.50–$9</td><td>$10–$14</td><td>20%</td></tr>
+                                <tr><td>Royal Caribbean</td><td>$14–$16</td><td>$8–$10</td><td>$12 – $18</td><td>18%</td></tr>
                                 <tr><td>Carnival</td><td>$12 – $15</td><td>$7.50 – $9</td><td>$10 – $15</td><td>20%</td></tr>
                                 <tr><td>Celebrity</td><td>$15 – $20</td><td>$9 – $12</td><td>$12 – $20</td><td>20%</td></tr>
                                 <tr><td>NCL (Norwegian)</td><td>$15 – $22</td><td>$8 – $13</td><td>$13 – $22</td><td>20%</td></tr>
@@ -127,55 +124,43 @@
                                 <tr><td>Cunard</td><td>$13 – $18</td><td>$9 – $11</td><td>$12 – $18</td><td>15%</td></tr>
                             </tbody>
                         </table>
-                        <p class="mt-8 mb-4 font-bold text-white">2. High-End "Top Tier" Packages (The "All-In" Cost)</p>
-                        <ul class="space-y-4 text-slate-300">
-                            <li><strong class="text-cyan-400">Princess Premier:</strong> $100 - 105/day (Includes Crew Appreciation gratuities, Wi-Fi, Unlimited Specialty Dinners, plus other perks).</li>
-                            <li><strong class="text-cyan-400">Celebrity Premium:</strong> $85 – $105/day (Covers drinks up to $17).</li>
-                            <li><strong class="text-cyan-400">Carnival Cheers!:</strong> $71.94 – $83.94/day (Pre-purchase vs. Onboard price).</li>
-                            <li><strong class="text-cyan-400">NCL "Free at Sea Plus":</strong> ~$128/day (Upgrade cost from standard promo).</li>
-                            <li><strong class="text-cyan-400">Royal Caribbean Deluxe:</strong> $75 – $115/day (Highly dynamic pricing).</li>
-                            <li><strong class="text-cyan-400">Cunard Premium:</strong> $75 – $85/day (Includes specialized coffees and waters).</li>
-                        </ul>
-                        <p class="mt-8 mb-4 font-bold text-white">3. Decoder Logic & Assumptions</p>
-                        <p class="mb-4">To give you a best estimate breakeven point, this tool utilizes the following 2026 benchmarks:</p>
-                        <ul class="list-disc pl-5 space-y-2 mb-8">
-                            <li><strong>Pricing:</strong> We are assuming $14 drinks and $8 beer.</li>
-                            <li><strong>The Gratuity Factor:</strong> We add 20% to your a la carte total automatically. If you spend $100 at the bar, our tool knows your bill is actually $120. The gratuity percentage is included in the equation.</li>
-                            <li><strong>The Port Day Penalty:</strong> Remember: if you are on a Mediterranean or Alaska itinerary with long port hours, your "window" to drink on the ship is smaller, making packages harder to justify.</li>
-                            <li><strong>Included Value:</strong> For Princess, where the package includes crew appreciation (tips), the "Package" math is more favorable.</li>
-                        </ul>
-                        <p class="mt-8 mb-4 font-bold text-white">4. Other Package Tiers</p>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li><strong>Zero-Proof / Refreshment:</strong> Covers mocktails, sodas, and premium coffees. (Fleet Avg: $32/day).</li>
-                            <li><strong>The Soda Key:</strong> Unlimited fountain soda and juices. (Fleet Avg: $15/day).</li>
-                            <li><strong>Specialty Coffee Cards:</strong> Often sold in 10 or 15-drink punch cards.</li>
-                        </ul>
+                        <p class="mt-8 font-bold text-white underline">2. Top Tier Packages & Logic</p>
+                        <p class="mt-4">Prices: Princess Premier ($100-$105), Celebrity Premium ($85-$105), Carnival Cheers ($72-$84). Logic assumes $14 cocktails / $8 beer + 20% auto-tip included.</p>
                     </div>
 
                     <div id="p2" style="display:none;">
-                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic italic">Baggage Considerations: 2026 Manual</h3>
-                        <p class="mb-4 font-bold text-white">1. The Standard for the "Big Three" (American, Delta, United)</p>
-                        <p class="mb-6 text-slate-400">Standard has moved to <strong>Volumetric Compliance</strong>. If your bag doesn't slide into the automated metal sizer without a shove, it's a gate-check.</p>
-                        <ul class="space-y-4 mb-8">
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Personal Item:</strong> 17x10x9in. Must fit entirely under seat. <span class="text-cyan-400 italic">Tip: Basic Economy passengers restricted to this.</span></li>
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Carry-On:</strong> 22x14x9in. Must include wheels and handles in measurement.</li>
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Checked Bag (Economy):</strong> 50 lbs limit. Fees average $45–$50.</li>
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Checked Bag (Premium):</strong> 70 lbs (32 kg) limit. Most premium tickets include 2-3 bags free.</li>
-                        </ul>
-                        <p class="mb-4 font-bold text-white">2. Regional Airlines</p>
-                        <p class="mb-6">International regional carriers often cap carry-ons at <strong>15–22 lbs (7–10 kg)</strong>. Many allow only 10kg for Economy carry-ons.</p>
-                        <p class="mb-4 font-bold text-white">3. Surcharges & The 2026 "Fuel Factor"</p>
-                        <p>Crossing the 50 lb. mark in Economy is expensive ($100–$200 surcharge). <strong>Fuel Disclaimers:</strong> Variable Fuel Surcharges (YQ/YR codes) and $10-$25 handling fees common.</p>
+                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic italic">Baggage Considerations</h3>
+                        <div class="space-y-6 text-slate-300">
+                            <p><strong>1. The Standard for the "Big Three", and many other national and International Airlines</strong><br>American Airlines, Delta Airlines, United Airlines. In 2026, the "Standard" has moved to Volumetric Compliance. If your bag doesn't slide into the automated metal sizer without a shove, it's a gate-check.</p>
+                            <p class="ml-4"><strong>Personal Item:</strong> 17 x 10 x 9 inches. Must fit entirely under the seat.</p>
+                            <p class="ml-8 italic text-cyan-400"><strong>Tip:</strong> Basic Economy passengers are often restricted exclusively to this item.</p>
+                            <p class="ml-4"><strong>Carry-On:</strong> 22 x 14 x 9 inches. Must include wheels and handles in your measurement.</p>
+                            <p class="ml-4"><strong>Checked Bag (Economy):</strong> 50 lbs (23 kg) limit. Fees now average $45–$50 for the first bag if not prepaid. A small discount may be applied when purchasing before flight check-in.</p>
+                            <p class="ml-4"><strong>Checked Bag (First/Business):</strong> 70 lbs (32 kg) limit. Most premium tickets include 2-3 bags at this weight for free.</p>
+                            
+                            <p><strong>2. Regional Airlines</strong><br>Traveling outside the major hubs requires extreme caution.</p>
+                            <p class="ml-4"><strong>Weight Sensitivity:</strong> Unlike US domestic flights, international regional carriers often cap carry-ons at 15–22 lbs (7–10 kg). If you are over, they will move it to the hold at the jet bridge.</p>
+                            <p class="ml-4"><strong>The Regional Rule:</strong> Many Regional carriers (as of 2026) allow only 10kg for Economy and 12kg for Business for carry-ons. Anything over is charged per kilo at the counter. See actual fees for your specific flight.</p>
+                            
+                            <p><strong>3. Surcharges & The 2026 "Fuel Factor"</strong></p>
+                            <p class="ml-4"><strong>Overweight Fees:</strong> Crossing the 50 lb. mark in Economy is expensive. Most airlines now charge a flat $100–$200 surcharge for bags between 51 and 70 lbs.</p>
+                            <p class="ml-4"><strong>Fuel Disclaimers:</strong> Many 2026 tickets now include a "Variable Fuel Surcharge" (YQ/YR codes). While this is usually in the fare, some regional carriers in high-cost zones may apply an additional $10–$25 "Security & Fuel Handling" fee per checked bag at the counter.</p>
+                            
+                            <p class="mt-6 italic text-slate-500 underline decoration-slate-700">These guidelines are provided as a best estimate at the time of publishing. Consult your carrier’s website a few days before flying for current limits and pricing.</p>
+                        </div>
                     </div>
 
                     <div id="p3" style="display:none;">
                         <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic italic">Currency Intelligence & Port Strategy</h3>
-                        <p class="mb-4 font-bold text-white">1. The Currency Reality Buffer</p>
-                        <p class="mb-6">Standard bank/ATM spreads cost you 3-7%. Our matrix builds in a <strong>4% Reality Buffer</strong> so you know the actual cash you will receive after common fees.</p>
-                        <p class="mb-4 font-bold text-white">2. Airport & Port Traps</p>
-                        <p class="mb-6">Exchange kiosks at airport arrivals are predatory. Expect to lose **12-15%** of value. Machines inside terminals or at cruise piers (e.g., Euronet) charge massive usage fees ($5-$12) and 10% worse conversion rates.</p>
-                        <p class="mb-4 font-bold text-white">3. Tipping Rules (2026)</p>
-                        <p><strong>Auto-Gratuity:</strong> Covers room/dining staff, but NOT shore guides ($10-$20). <strong>Port Intelligence:</strong> Look for 'Servicio Incluido' or 'Propina' on bills in Mexico/Caribbean before adding extra.</p>
+                        <p class="mb-4 font-bold text-white">1. The "Arrivals" Trap & ATM Logic</p>
+                        <p class="mb-6">Exchange kiosks at airport arrivals are predatory convenience traps. Expect to lose **12-15%** of value. Machines inside terminals or at cruise piers (e.g., Euronet) charge massive usage fees ($5-$12) and 10% worse conversion rates. Walk two blocks away from the port or airport to find a "Mainline" local bank machine for the best rates.</p>
+                        
+                        <p class="mb-4 font-bold text-white underline tracking-widest uppercase">2. The Global Tipping & Gratuity Manual (2026)</p>
+                        <div class="space-y-4">
+                            <p><strong>The "Automatic" Trap:</strong> 2026 Auto-Gratuities ($18-$20/day) cover your room and dining staff, but NOT shore excursion guides. If you don't tip cash on the pier, the guide receives nothing.</p>
+                            <p><strong>Shore Excursion Etiquette:</strong> Drivers: $2-$5 per person. Specialist Guides (History/Diving): $10-$20. Private Drivers: 10-15% of the total tour cost.</p>
+                            <p><strong>The Currency Strategy:</strong> USD $1 bills are essential for small tips in the Caribbean, Bahamas, and Mexico. In Europe, use local Euro coins—don't tip USD as the staff cannot easily exchange it.</p>
+                        </div>
                     </div>
 
                 </div>
@@ -201,16 +186,21 @@
             const res = (100 / f) * t * 0.96;
             const r = document.getElementById('res_curr');
             r.style.display = 'block';
-            r.innerText = res.toLocaleString(undefined, {minimumFractionDigits: 2});
+            r.innerText = res.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
         function doDrinks() {
             const p = parseFloat(document.getElementById('pkg_price').value)||0;
             const c = parseFloat(document.getElementById('avg_cocktail').value)||0;
             const b = parseFloat(document.getElementById('avg_beer').value)||0;
-            const tot = ((c * 4.5) + (b * 2.5)) * 1.2;
+            const daily_est = ((c * 4.5) + (b * 2.5)) * 1.2;
+            const diff = daily_est - p;
             const r = document.getElementById('res_drinks');
             r.style.display = 'block';
-            r.innerHTML = tot >= p ? '<span class="text-emerald-400">✅ WORTH IT</span>' : '<span class="text-rose-400">❌ NOT WORTH IT</span>';
+            if (diff >= 0) {
+                r.innerHTML = `<span class="text-emerald-400">✅ WORTH IT (+$${diff.toFixed(2)}/Day)</span>`;
+            } else {
+                r.innerHTML = `<span class="text-rose-400">❌ NOT WORTH IT (-$${Math.abs(diff).toFixed(2)}/Day)</span>`;
+            }
         }
         function doBags() {
             const v = parseFloat(document.getElementById('bag_in').value)||0;
