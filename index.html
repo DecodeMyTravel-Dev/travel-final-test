@@ -10,7 +10,7 @@
         .custom-scroll::-webkit-scrollbar-thumb { background: #22d3ee; border-radius: 10px; }
         .tab-btn { flex: 1; padding: 20px 0; font-size: 11px; font-weight: 900; text-transform: uppercase; color: #64748b; border-bottom: 2px solid #1e293b; background: #020617; cursor: pointer; }
         .tab-btn.active { color: #22d3ee; border-bottom: 3px solid #22d3ee; background: #0f172a; }
-        .tool-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 2rem; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .tool-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 2rem; padding: 2rem; }
         table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 20px 0; border: 1px solid #1e293b; color: white; }
         th, td { border: 1px solid #1e293b; padding: 12px; text-align: left; }
         th { background: #1e293b; color: #22d3ee; text-transform: uppercase; }
@@ -33,6 +33,7 @@
             <section class="tool-card">
                 <h2 class="text-cyan-400 font-black mb-6 uppercase text-xs tracking-widest italic">15-Currency Matrix (100 Base)</h2>
                 <div class="space-y-4">
+                    <label class="text-[10px] text-slate-500 font-black uppercase">I Have (100 Units):</label>
                     <select id="from_curr" class="w-full bg-[#1e293b] p-4 rounded-xl outline-none border border-slate-700 font-bold text-white text-sm">
                         <option value="1">USD (US Dollar)</option><option value="0.92">EUR (Euro)</option><option value="0.79">GBP (British Pound)</option>
                         <option value="1.36">CAD (Canadian Dollar)</option><option value="155.5">JPY (Japanese Yen)</option><option value="17.1">MXN (Mexican Peso)</option>
@@ -40,10 +41,11 @@
                         <option value="11.0">NOK (Norwegian Krone)</option><option value="10.8">SEK (Swedish Krona)</option><option value="83.3">INR (Indian Rupee)</option>
                         <option value="5.1">BRL (Brazilian Real)</option><option value="3.75">SAR (Saudi Riyal)</option><option value="0.91">CHF (Swiss Franc)</option>
                     </select>
+                    <label class="text-[10px] text-slate-500 font-black uppercase">I Want:</label>
                     <select id="to_curr" class="w-full bg-[#1e293b] p-4 rounded-xl outline-none border border-slate-700 font-bold text-cyan-400 text-sm">
                         <option value="0.92">EUR (Euro)</option><option value="1">USD (US Dollar)</option><option value="17.1">MXN (Mexican Peso)</option>
                     </select>
-                    <button onclick="doConvert()" class="w-full bg-cyan-500 text-[#020617] font-black py-5 rounded-xl uppercase tracking-widest hover:bg-cyan-400 transition">Convert (4% Fee)</button>
+                    <button onclick="doConvert()" class="w-full bg-cyan-500 text-[#020617] font-black py-5 rounded-xl uppercase tracking-widest">Convert (4% Fee)</button>
                     <div id="res_curr" style="display:none;" class="mt-4 p-6 bg-[#020617] rounded-xl text-center text-3xl font-black text-cyan-400 border border-slate-800"></div>
                 </div>
             </section>
@@ -54,8 +56,14 @@
                     <label class="text-[10px] text-slate-500 font-black uppercase">Package Cost / Day ($)</label>
                     <input type="number" id="pkg_price" value="75" class="w-full bg-[#1e293b] p-4 rounded-xl border border-slate-700 text-white font-bold">
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="number" id="avg_cocktail" value="14" class="w-full bg-[#1e293b] p-4 rounded-xl border border-slate-700 font-bold text-white" placeholder="Cocktail $">
-                        <input type="number" id="avg_beer" value="8" class="w-full bg-[#1e293b] p-4 rounded-xl border border-slate-700 font-bold text-white" placeholder="Beer $">
+                        <div>
+                            <label class="text-[10px] text-slate-500 font-black uppercase">Avg Cocktail $</label>
+                            <input type="number" id="avg_cocktail" value="14" class="w-full bg-[#1e293b] p-4 rounded-xl border border-slate-700 font-bold text-white">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-500 font-black uppercase">Avg Beer $</label>
+                            <input type="number" id="avg_beer" value="8" class="w-full bg-[#1e293b] p-4 rounded-xl border border-slate-700 font-bold text-white">
+                        </div>
                     </div>
                     <button onclick="doDrinks()" class="w-full bg-cyan-500 text-[#020617] font-black py-5 rounded-xl uppercase tracking-widest">Analyze Value</button>
                     <div id="res_drinks" style="display:none;" class="mt-4 p-6 bg-[#020617] rounded-xl text-center font-black border border-slate-800"></div>
@@ -65,8 +73,14 @@
             <section class="tool-card">
                 <h2 class="text-cyan-400 font-black mb-6 uppercase text-xs tracking-widest italic">Weight Converter</h2>
                 <div class="flex gap-4">
-                    <input type="number" id="bag_in" value="50" class="flex-1 bg-[#1e293b] p-4 rounded-xl border border-slate-700 text-white font-bold">
-                    <select id="bag_u" class="bg-[#1e293b] p-4 rounded-xl font-black text-cyan-400 border border-slate-700"><option value="lb">LB</option><option value="kg">KG</option></select>
+                    <div class="flex-1">
+                        <label class="text-[10px] text-slate-500 font-black uppercase">Value</label>
+                        <input type="number" id="bag_in" value="50" class="w-full bg-[#1e293b] p-4 rounded-xl border border-slate-700 text-white font-bold">
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-slate-500 font-black uppercase">Unit</label>
+                        <select id="bag_u" class="w-full bg-[#1e293b] p-4 rounded-xl font-black text-cyan-400 border border-slate-700"><option value="lb">LB</option><option value="kg">KG</option></select>
+                    </div>
                 </div>
                 <button onclick="doBags()" class="w-full bg-slate-700 mt-4 font-black py-5 rounded-xl uppercase tracking-widest">Convert Weight</button>
                 <div id="res_bags" style="display:none;" class="mt-4 p-6 bg-[#020617] rounded-xl text-center text-cyan-400 font-mono text-2xl font-black border border-slate-800"></div>
@@ -90,16 +104,15 @@
                 <div class="flex border-b border-slate-800">
                     <button id="b1" onclick="tab('drink')" class="tab-btn active">Drink Index</button>
                     <button id="b2" onclick="tab('bag')" class="tab-btn">Baggage Manual</button>
-                    <button id="b3" onclick="tab('air')" class="tab-btn">Exchange Traps</button>
+                    <button id="b3" onclick="tab('air')" class="tab-btn">Currency & Port Intel</button>
                 </div>
                 
                 <div class="p-8 md:p-12 flex-1 overflow-y-auto custom-scroll text-sm leading-relaxed">
                     
                     <div id="p1" style="display:block;">
-                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic">Cruise Drink Decoder: The 2026 Price Index</h3>
+                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic italic">Cruise Drink Decoder: The 2026 Price Index</h3>
                         <p class="mb-4 font-bold text-white">1. A La Carte Pricing (May 2026 Fleet Averages)</p>
                         <p class="mb-6 text-slate-400">Choosing to "Pay as You Go" requires tracking the 20% "hidden tax" (automatic gratuity) applied on most lines. Below is the current market rate for single servings.</p>
-                        
                         <table>
                             <thead>
                                 <tr><th>Cruise Line</th><th>Cocktail Avg</th><th>Beer Avg</th><th>Wine (Glass)</th><th>Automatic Tip</th></tr>
@@ -114,7 +127,6 @@
                                 <tr><td>Cunard</td><td>$13 – $18</td><td>$9 – $11</td><td>$12 – $18</td><td>15%</td></tr>
                             </tbody>
                         </table>
-
                         <p class="mt-8 mb-4 font-bold text-white">2. High-End "Top Tier" Packages (The "All-In" Cost)</p>
                         <ul class="space-y-4 text-slate-300">
                             <li><strong class="text-cyan-400">Princess Premier:</strong> $100 - 105/day (Includes Crew Appreciation gratuities, Wi-Fi, Unlimited Specialty Dinners, plus other perks).</li>
@@ -124,48 +136,46 @@
                             <li><strong class="text-cyan-400">Royal Caribbean Deluxe:</strong> $75 – $115/day (Highly dynamic pricing).</li>
                             <li><strong class="text-cyan-400">Cunard Premium:</strong> $75 – $85/day (Includes specialized coffees and waters).</li>
                         </ul>
-
                         <p class="mt-8 mb-4 font-bold text-white">3. Decoder Logic & Assumptions</p>
                         <p class="mb-4">To give you a best estimate breakeven point, this tool utilizes the following 2026 benchmarks:</p>
                         <ul class="list-disc pl-5 space-y-2 mb-8">
                             <li><strong>Pricing:</strong> We are assuming $14 drinks and $8 beer.</li>
-                            <li><strong>The Gratuity Factor:</strong> We add 20% to your a la carte total automatically. If you spend $100 at the bar, our tool knows your bill is actually $120.</li>
-                            <li><strong>The Port Day Penalty:</strong> Remember: if you are on a Mediterranean or Alaska itinerary with long port hours, your "window" to drink on the ship is smaller.</li>
+                            <li><strong>The Gratuity Factor:</strong> We add 20% to your a la carte total automatically. If you spend $100 at the bar, our tool knows your bill is actually $120. The gratuity percentage is included in the equation.</li>
+                            <li><strong>The Port Day Penalty:</strong> Remember: if you are on a Mediterranean or Alaska itinerary with long port hours, your "window" to drink on the ship is smaller, making packages harder to justify.</li>
                             <li><strong>Included Value:</strong> For Princess, where the package includes crew appreciation (tips), the "Package" math is more favorable.</li>
                         </ul>
-
                         <p class="mt-8 mb-4 font-bold text-white">4. Other Package Tiers</p>
                         <ul class="list-disc pl-5 space-y-2">
                             <li><strong>Zero-Proof / Refreshment:</strong> Covers mocktails, sodas, and premium coffees. (Fleet Avg: $32/day).</li>
                             <li><strong>The Soda Key:</strong> Unlimited fountain soda and juices. (Fleet Avg: $15/day).</li>
-                            <li><strong>Specialty Coffee Cards:</strong> Often sold in 10 or 15-drink punch cards for a flat fee.</li>
+                            <li><strong>Specialty Coffee Cards:</strong> Often sold in 10 or 15-drink punch cards.</li>
                         </ul>
                     </div>
 
                     <div id="p2" style="display:none;">
-                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic">Baggage Considerations: 2026 Manual</h3>
+                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic italic">Baggage Considerations: 2026 Manual</h3>
                         <p class="mb-4 font-bold text-white">1. The Standard for the "Big Three" (American, Delta, United)</p>
-                        <p class="mb-6 text-slate-400">In 2026, the "Standard" has moved to Volumetric Compliance. If your bag doesn't slide into the automated metal sizer without a shove, it's a gate-check.</p>
+                        <p class="mb-6 text-slate-400">Standard has moved to <strong>Volumetric Compliance</strong>. If your bag doesn't slide into the automated metal sizer without a shove, it's a gate-check.</p>
                         <ul class="space-y-4 mb-8">
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Personal Item:</strong> 17 x 10 x 9 inches. Must fit entirely under the seat. <span class="text-cyan-400 italic">Tip: Basic Economy passengers restricted exclusively to this.</span></li>
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Carry-On:</strong> 22 x 14 x 9 inches. Must include wheels and handles in your measurement.</li>
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Checked Bag (Economy):</strong> 50 lbs (23 kg) limit. Fees average $45–$50.</li>
-                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Checked Bag (First/Business):</strong> 70 lbs (32 kg) limit. Most premium tickets include 2-3 bags for free.</li>
+                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Personal Item:</strong> 17x10x9in. Must fit entirely under seat. <span class="text-cyan-400 italic">Tip: Basic Economy passengers restricted to this.</span></li>
+                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Carry-On:</strong> 22x14x9in. Must include wheels and handles in measurement.</li>
+                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Checked Bag (Economy):</strong> 50 lbs limit. Fees average $45–$50.</li>
+                            <li class="bg-[#020617] p-6 rounded-2xl border border-slate-800"><strong>Checked Bag (Premium):</strong> 70 lbs (32 kg) limit. Most premium tickets include 2-3 bags free.</li>
                         </ul>
                         <p class="mb-4 font-bold text-white">2. Regional Airlines</p>
-                        <p class="mb-6">International regional carriers often cap carry-ons at 15–22 lbs (7–10 kg). If you are over, they will move it to the hold. <strong>The Regional Rule:</strong> Many carriers allow only 10kg for Economy carry-ons.</p>
+                        <p class="mb-6">International regional carriers often cap carry-ons at <strong>15–22 lbs (7–10 kg)</strong>. Many allow only 10kg for Economy carry-ons.</p>
                         <p class="mb-4 font-bold text-white">3. Surcharges & The 2026 "Fuel Factor"</p>
-                        <p class="mb-6">Overweight Fees: Crossing the 50 lb. mark in Economy is expensive ($100–$200 surcharge). <strong>Fuel Disclaimers:</strong> Variable Fuel Surcharges (YQ/YR codes) and $10-$25 handling fees common.</p>
+                        <p>Crossing the 50 lb. mark in Economy is expensive ($100–$200 surcharge). <strong>Fuel Disclaimers:</strong> Variable Fuel Surcharges (YQ/YR codes) and $10-$25 handling fees common.</p>
                     </div>
 
                     <div id="p3" style="display:none;">
-                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic">Exchange & Port Strategy</h3>
-                        <p class="mb-4 font-bold text-white">1. The "Arrivals" Trap</p>
-                        <p class="mb-6">Exchange kiosks at airport arrivals are predatory convenience traps. Expect to lose **12-15%** of value through bad rates and hidden spreads.</p>
-                        <p class="mb-4 font-bold text-white">2. Private ATMs</p>
-                        <p class="mb-6">Machines inside terminals or at cruise piers (e.g., Euronet) charge massive usage fees ($5-$12) and 10% worse conversion rates. Walk two blocks away from the port to find a bank machine.</p>
-                        <p class="mb-4 font-bold text-white">3. Terminal Deception</p>
-                        <p>ALWAYS pick <strong>Local Currency</strong> at card terminals. Choosing USD allows the merchant to set a predatory exchange rate (Dynamic Currency Conversion).</p>
+                        <h3 class="text-cyan-400 font-black text-2xl mb-8 uppercase italic italic">Currency Intelligence & Port Strategy</h3>
+                        <p class="mb-4 font-bold text-white">1. The Currency Reality Buffer</p>
+                        <p class="mb-6">Standard bank/ATM spreads cost you 3-7%. Our matrix builds in a <strong>4% Reality Buffer</strong> so you know the actual cash you will receive after common fees.</p>
+                        <p class="mb-4 font-bold text-white">2. Airport & Port Traps</p>
+                        <p class="mb-6">Exchange kiosks at airport arrivals are predatory. Expect to lose **12-15%** of value. Machines inside terminals or at cruise piers (e.g., Euronet) charge massive usage fees ($5-$12) and 10% worse conversion rates.</p>
+                        <p class="mb-4 font-bold text-white">3. Tipping Rules (2026)</p>
+                        <p><strong>Auto-Gratuity:</strong> Covers room/dining staff, but NOT shore guides ($10-$20). <strong>Port Intelligence:</strong> Look for 'Servicio Incluido' or 'Propina' on bills in Mexico/Caribbean before adding extra.</p>
                     </div>
 
                 </div>
@@ -191,7 +201,7 @@
             const res = (100 / f) * t * 0.96;
             const r = document.getElementById('res_curr');
             r.style.display = 'block';
-            r.innerText = res.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            r.innerText = res.toLocaleString(undefined, {minimumFractionDigits: 2});
         }
         function doDrinks() {
             const p = parseFloat(document.getElementById('pkg_price').value)||0;
